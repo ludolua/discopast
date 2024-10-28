@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Bem-vindo, {{ user['display_name'] }}!</h2>
+    <p>Explore álbuns no Spotify e adicione-os à sua coleção.</p>
+    <a href="{{ url_for('collection') }}">Ver minha coleção</a>
+{% endblock %}

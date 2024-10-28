@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Buscar Álbuns</h2>
+    <form method="POST" action="{{ url_for('search') }}">
+        <input type="text" name="query" placeholder="Digite o nome do álbum" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <div class="album-list">
+        {% for album in albums %}
+            <div class="album">
+                <img src="{{ album['images'][0]['url'] }}" alt="Capa do álbum {{ album['name'] }}">
+                <h3>{{ album['name'] }}</h3>
+                <p>{{ album['artists'][0]['name'] }}</p>
+                <a href="{{ url_for('add_album', album_id=album['id']) }}">Adicionar à coleção</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
